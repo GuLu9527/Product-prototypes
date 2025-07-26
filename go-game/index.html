@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>围棋游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/board.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 游戏标题 -->
+        <header class="game-header">
+            <h1>围棋游戏</h1>
+        </header>
+
+        <!-- 游戏控制区 -->
+        <div class="game-controls">
+            <div class="current-player">
+                <span id="current-turn">黑子回合</span>
+            </div>
+            <button id="restart-btn" class="restart-button">重新开始</button>
+        </div>
+
+        <!-- 围棋棋盘 -->
+        <div class="board-container">
+            <div id="go-board" class="go-board">
+                <!-- 棋盘将通过JavaScript动态生成 -->
+            </div>
+        </div>
+
+        <!-- 游戏信息 -->
+        <div class="game-info">
+            <div class="captured-stones">
+                <div class="black-captured">
+                    <span>黑子提子: </span>
+                    <span id="black-captured">0</span>
+                </div>
+                <div class="white-captured">
+                    <span>白子提子: </span>
+                    <span id="white-captured">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript文件 -->
+    <script src="js/rules.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+/* 围棋棋盘样式 */
+.go-board {
+    width: 570px;
+    height: 570px;
+    background: #DEB887;
+    border: 3px solid #8B4513;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+}
+
+/* 棋盘网格线 */
+.board-line {
+    position: absolute;
+    background: #8B4513;
+}
+
+.board-line.horizontal {
+    height: 1px;
+    width: 540px;
+    left: 15px;
+}
+
+.board-line.vertical {
+    width: 1px;
+    height: 540px;
+    top: 15px;
+}
+
+/* 棋盘交叉点 */
+.board-intersection {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-intersection:hover {
+    background: rgba(139, 69, 19, 0.2);
+}
+
+/* 棋子样式 */
+.stone {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.stone.black {
+    background: radial-gradient(circle at 30% 30%, #555, #000);
+    border: 1px solid #333;
+}
+
+.stone.white {
+    background: radial-gradient(circle at 30% 30%, #fff, #ddd);
+    border: 1px solid #ccc;
+}
+
+.stone:hover {
+    transform: scale(1.05);
+}
+
+/* 星位标记 */
+.star-point {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #8B4513;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 最后落子标记 */
+.last-move {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ff4444;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+/* 禁着点标记 */
+.forbidden {
+    background: rgba(255, 0, 0, 0.3) !important;
+}
+
+.forbidden:hover {
+    background: rgba(255, 0, 0, 0.5) !important;
+    cursor: not-allowed;
+}
+
+/* 响应式棋盘 */
+@media (max-width: 768px) {
+    .go-board {
+        width: 456px;
+        height: 456px;
+    }
+    
+    .board-line.horizontal {
+        width: 432px;
+        left: 12px;
+    }
+    
+    .board-line.vertical {
+        height: 432px;
+        top: 12px;
+    }
+    
+    .board-intersection {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .stone {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .go-board {
+        width: 342px;
+        height: 342px;
+    }
+    
+    .board-line.horizontal {
+        width: 324px;
+        left: 9px;
+    }
+    
+    .board-line.vertical {
+        height: 324px;
+        top: 9px;
+    }
+    
+    .board-intersection {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .stone {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .star-point {
+        width: 4px;
+        height: 4px;
+    }
+    
+    .last-move {
+        width: 6px;
+        height: 6px;
+    }
+}
