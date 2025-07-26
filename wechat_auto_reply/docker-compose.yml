@@ -1,0 +1,49 @@
+# 微信公众号自动回复系统 Docker Compose 配置
+version: '3.8'
+
+services:
+  wechat-auto-reply:
+    build: .
+    container_name: wechat_auto_reply
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - WECHAT_TOKEN=${WECHAT_TOKEN:-your_wechat_token_here}
+      - FLASK_ENV=production
+    volumes:
+      - ./logs:/app/logs
+      - ./wechat_auto_reply.log:/app/wechat_auto_reply.log
+      - ./error.log:/app/error.log
+    networks:
+      - wechat_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  nginx:
+    image: nginx:alpine
+    container_name: wechat_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro  # SSL证书目录（如果使用HTTPS）
+    depends_on:
+      - wechat-auto-reply
+    networks:
+      - wechat_network
+
+networks:
+  wechat_network:
+    driver: bridge
+
+# 可选：添加数据卷用于持久化存储
+volumes:
+  logs_data:
+    driver: local
