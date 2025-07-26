@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科幻博客 - 未来之光</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-js"></div>
+    
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">CYBER</span>
+                <span class="logo-accent">BLOG</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#blog" class="nav-link">博客</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">关于</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">联系</a>
+                </li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主页面 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-avatar">
+                    <img src="/placeholder.svg?height=200&width=200" alt="头像" class="avatar-img">
+                    <div class="avatar-ring"></div>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">欢迎来到</span>
+                    <span class="title-main">未来世界</span>
+                </h1>
+                <p class="hero-subtitle">探索科技前沿 | 分享编程智慧 | 创造数字未来</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">技术文章</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">开源项目</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">代码提交</span>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <button class="cta-button primary">探索博客</button>
+                    <button class="cta-button secondary">查看项目</button>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- 最新文章 -->
+        <section id="blog" class="latest-posts">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-text">最新文章</span>
+                    <span class="title-line"></span>
+                </h2>
+                <div class="posts-grid">
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="/placeholder.svg?height=200&width=350" alt="文章封面">
+                            <div class="post-overlay">
+                                <span class="post-category">前端开发</span>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <h3 class="post-title">React 18 新特性深度解析</h3>
+                            <p class="post-excerpt">探索React 18带来的并发特性、自动批处理和Suspense的全新可能性...</p>
+                            <div class="post-meta">
+                                <span class="post-date">2024-01-15</span>
+                                <span class="post-read-time">5分钟阅读</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="/placeholder.svg?height=200&width=350" alt="文章封面">
+                            <div class="post-overlay">
+                                <span class="post-category">人工智能</span>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <h3 class="post-title">AI驱动的代码生成工具</h3>
+                            <p class="post-excerpt">深入了解GitHub Copilot、ChatGPT等AI工具如何改变编程方式...</p>
+                            <div class="post-meta">
+                                <span class="post-date">2024-01-12</span>
+                                <span class="post-read-time">8分钟阅读</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="post-image">
+                            <img src="/placeholder.svg?height=200&width=350" alt="文章封面">
+                            <div class="post-overlay">
+                                <span class="post-category">Web3</span>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <h3 class="post-title">区块链技术在前端的应用</h3>
+                            <p class="post-excerpt">从DApp开发到NFT市场，探索区块链技术与前端开发的完美结合...</p>
+                            <div class="post-meta">
+                                <span class="post-date">2024-01-10</span>
+                                <span class="post-read-time">12分钟阅读</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="view-all">
+                    <button class="view-all-btn">查看全部文章</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技能展示 -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-text">技术栈</span>
+                    <span class="title-line"></span>
+                </h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="category-title">前端开发</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">React</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="95"></div>
+                                </div>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Vue.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">TypeScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                                <span class="skill-percent">88%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="category-title">后端开发</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Node.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">MongoDB</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="75"></div>
+                                </div>
+                                <span class="skill-percent">75%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="category-title">设计工具</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Figma</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="92"></div>
+                                </div>
+                                <span class="skill-percent">92%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Adobe XD</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="78"></div>
+                                </div>
+                                <span class="skill-percent">78%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Blender</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="65"></div>
+                                </div>
+                                <span class="skill-percent">65%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我 -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-text">关于我</span>
+                    <span class="title-line"></span>
+                </h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="about-intro">
+                            我是一名充满激情的全栈开发者，专注于创造令人惊叹的数字体验。
+                            在科技的海洋中探索前沿技术，用代码构建未来世界。
+                        </p>
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <h4>技术专长</h4>
+                                <p>精通现代前端框架，熟悉后端开发，拥有丰富的全栈项目经验</p>
+                            </div>
+                            <div class="highlight-item">
+                                <h4>设计理念</h4>
+                                <p>追求极简美学与功能性的完美平衡，创造直观且富有创意的用户体验</p>
+                            </div>
+                            <div class="highlight-item">
+                                <h4>未来愿景</h4>
+                                <p>致力于推动Web技术发展，探索AI与前端的融合，构建智能化应用</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual">
+                        <div class="code-animation">
+                            <div class="code-line">
+                                <span class="code-keyword">const</span>
+                                <span class="code-variable">developer</span>
+                                <span class="code-operator">=</span>
+                                <span class="code-string">"passionate"</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-keyword">function</span>
+                                <span class="code-function">createFuture</span>
+                                <span class="code-bracket">()</span>
+                                <span class="code-bracket">{</span>
+                            </div>
+                            <div class="code-line indent">
+                                <span class="code-keyword">return</span>
+                                <span class="code-string">"innovation"</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-bracket">}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我 -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-text">联系我</span>
+                    <span class="title-line"></span>
+                </h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h4>邮箱</h4>
+                                <p>hello@cyberblog.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🐙</div>
+                            <div class="contact-details">
+                                <h4>GitHub</h4>
+                                <p>github.com/cyberblogger</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">💼</div>
+                            <div class="contact-details">
+                                <h4>LinkedIn</h4>
+                                <p>linkedin.com/in/cyberblogger</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🐦</div>
+                            <div class="contact-details">
+                                <h4>Twitter</h4>
+                                <p>@cyberblogger</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="您的姓名" required>
+                            <label for="name">姓名</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="您的邮箱" required>
+                            <label for="email">邮箱</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="您的消息" rows="5" required></textarea>
+                            <label for="message">消息</label>
+                        </div>
+                        <button type="submit" class="submit-btn">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">CYBER</span>
+                    <span class="logo-accent">BLOG</span>
+                </div>
+                <p class="footer-text">探索科技前沿，分享编程智慧，创造数字未来</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link">GitHub</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CyberBlog. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/particles-config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
