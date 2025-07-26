@@ -1,0 +1,493 @@
+/* 组件样式 */
+
+/* 加载动画 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #409eff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 空状态 */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #909399;
+}
+
+.empty-state i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: #c0c4cc;
+}
+
+.empty-state p {
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+/* 提示消息 */
+.message {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    z-index: 3000;
+    display: none;
+}
+
+.message.show {
+    display: block;
+    animation: slideDown 0.3s ease-out;
+}
+
+.message.success {
+    background: #f0f9ff;
+    color: #409eff;
+    border: 1px solid #b3d8ff;
+}
+
+.message.error {
+    background: #fef0f0;
+    color: #f56c6c;
+    border: 1px solid #fbc4c4;
+}
+
+.message.warning {
+    background: #fdf6ec;
+    color: #e6a23c;
+    border: 1px solid #f5dab1;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* 确认对话框 */
+.confirm-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2500;
+}
+
+.confirm-dialog.show {
+    display: flex;
+}
+
+.confirm-content {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.confirm-icon {
+    font-size: 48px;
+    color: #e6a23c;
+    margin-bottom: 16px;
+}
+
+.confirm-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #303133;
+    margin-bottom: 8px;
+}
+
+.confirm-message {
+    color: #606266;
+    font-size: 14px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.confirm-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* 工具提示 */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #303133;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 12px;
+    position: absolute;
+    z-index: 1001;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #303133 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 进度条 */
+.progress {
+    width: 100%;
+    height: 8px;
+    background-color: #e4e7ed;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #409eff, #66b1ff);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* 标签页 */
+.tabs {
+    border-bottom: 1px solid #e4e7ed;
+    margin-bottom: 20px;
+}
+
+.tab-nav {
+    display: flex;
+    gap: 0;
+}
+
+.tab-item {
+    padding: 12px 20px;
+    color: #606266;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.tab-item:hover {
+    color: #409eff;
+}
+
+.tab-item.active {
+    color: #409eff;
+    border-bottom-color: #409eff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* 折叠面板 */
+.collapse {
+    border: 1px solid #e4e7ed;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.collapse-item {
+    border-bottom: 1px solid #e4e7ed;
+}
+
+.collapse-item:last-child {
+    border-bottom: none;
+}
+
+.collapse-header {
+    padding: 12px 16px;
+    background: #f5f7fa;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.collapse-header:hover {
+    background: #ecf5ff;
+}
+
+.collapse-header.active {
+    background: #ecf5ff;
+    color: #409eff;
+}
+
+.collapse-content {
+    padding: 16px;
+    display: none;
+    background: white;
+}
+
+.collapse-content.show {
+    display: block;
+}
+
+/* 步骤条 */
+.steps {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+
+.step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: #e4e7ed;
+    z-index: 1;
+}
+
+.step-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e4e7ed;
+    color: #909399;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+
+.step.active .step-icon {
+    background: #409eff;
+    color: white;
+}
+
+.step.completed .step-icon {
+    background: #67c23a;
+    color: white;
+}
+
+.step-title {
+    margin-left: 8px;
+    font-size: 14px;
+    color: #606266;
+}
+
+.step.active .step-title {
+    color: #409eff;
+    font-weight: 500;
+}
+
+/* 时间轴 */
+.timeline {
+    position: relative;
+    padding-left: 20px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e4e7ed;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #409eff;
+    z-index: 2;
+}
+
+.timeline-content {
+    background: white;
+    padding: 12px 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-time {
+    color: #909399;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.timeline-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #303133;
+    margin-bottom: 4px;
+}
+
+.timeline-desc {
+    font-size: 14px;
+    color: #606266;
+    line-height: 1.5;
+}
+
+/* 评分组件 */
+.rating {
+    display: flex;
+    gap: 4px;
+}
+
+.rating-star {
+    font-size: 16px;
+    color: #c0c4cc;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.rating-star.active {
+    color: #f7ba2a;
+}
+
+.rating-star:hover {
+    color: #f7ba2a;
+}
+
+/* 开关组件 */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #dcdfe6;
+    transition: 0.3s;
+    border-radius: 22px;
+}
+
+.switch-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.switch input:checked + .switch-slider {
+    background-color: #409eff;
+}
+
+.switch input:checked + .switch-slider:before {
+    transform: translateX(22px);
+}
+
+/* 滑块组件 */
+.slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #e4e7ed;
+    outline: none;
+    -webkit-appearance: none;
+    position: relative;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #409eff;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #409eff;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}

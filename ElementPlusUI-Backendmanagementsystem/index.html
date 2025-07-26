@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <!-- 引入图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 顶部导航栏 -->
+        <header class="header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">
+                    <i class="fas fa-cog"></i>
+                    <span>管理系统</span>
+                </div>
+            </div>
+            
+            <nav class="header-nav">
+                <div class="breadcrumb" id="breadcrumb">
+                    <span>首页</span>
+                </div>
+            </nav>
+            
+            <div class="header-right">
+                <div class="user-info">
+                    <div class="avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="username">管理员</span>
+                    <div class="dropdown">
+                        <i class="fas fa-chevron-down"></i>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">个人中心</a>
+                            <a href="#" class="dropdown-item">修改密码</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">退出登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar" id="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item active" data-page="dashboard">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>首页仪表板</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-page="users">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-users"></i>
+                            <span>用户管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-page="roles">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-user-tag"></i>
+                            <span>角色管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-page="system">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-cogs"></i>
+                            <span>系统管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-page="logs">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-list-alt"></i>
+                            <span>系统日志</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content" id="mainContent">
+            <!-- 首页仪表板 -->
+            <div class="page-content active" id="dashboard">
+                <div class="page-header">
+                    <h1>首页仪表板</h1>
+                    <p>欢迎使用后台管理系统</p>
+                </div>
+                
+                <!-- 统计卡片 -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>1,234</h3>
+                            <p>总用户数</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>856</h3>
+                            <p>活跃用户</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>2,468</h3>
+                            <p>今日访问</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>12</h3>
+                            <p>系统警告</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图表区域 -->
+                <div class="charts-section">
+                    <div class="chart-card">
+                        <div class="card-header">
+                            <h3>访问趋势</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="visitChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="card-header">
+                            <h3>用户分布</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="userChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快捷操作和动态列表 -->
+                <div class="dashboard-bottom">
+                    <div class="quick-actions">
+                        <div class="card-header">
+                            <h3>快捷操作</h3>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus"></i>
+                                添加用户
+                            </button>
+                            <button class="btn btn-success">
+                                <i class="fas fa-download"></i>
+                                导出数据
+                            </button>
+                            <button class="btn btn-warning">
+                                <i class="fas fa-cog"></i>
+                                系统设置
+                            </button>
+                        </div>
+                    </div>
+                    <div class="recent-activities">
+                        <div class="card-header">
+                            <h3>最近活动</h3>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>新用户 张三 注册成功</p>
+                                    <span class="activity-time">2分钟前</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>用户 李四 登录系统</p>
+                                    <span class="activity-time">5分钟前</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p>管理员修改了系统配置</p>
+                                    <span class="activity-time">10分钟前</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 用户管理页面 -->
+            <div class="page-content" id="users">
+                <div class="page-header">
+                    <h1>用户管理</h1>
+                    <button class="btn btn-primary" id="addUserBtn">
+                        <i class="fas fa-plus"></i>
+                        添加用户
+                    </button>
+                </div>
+
+                <!-- 搜索筛选区域 -->
+                <div class="filter-section">
+                    <div class="filter-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="搜索用户名或邮箱" id="userSearch">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="statusFilter">
+                                <option value="">全部状态</option>
+                                <option value="active">启用</option>
+                                <option value="inactive">禁用</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="roleFilter">
+                                <option value="">全部角色</option>
+                                <option value="admin">管理员</option>
+                                <option value="user">普通用户</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" id="searchBtn">搜索</button>
+                        <button class="btn btn-default" id="resetBtn">重置</button>
+                    </div>
+                </div>
+
+                <!-- 用户列表表格 -->
+                <div class="table-container">
+                    <table class="data-table" id="userTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="selectAll">
+                                </th>
+                                <th>用户ID</th>
+                                <th>用户名</th>
+                                <th>邮箱</th>
+                                <th>角色</th>
+                                <th>状态</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody">
+                            <!-- 用户数据将通过JavaScript动态生成 -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 分页 -->
+                <div class="pagination-container">
+                    <div class="pagination-info">
+                        显示第 <span id="pageStart">1</span> 到 <span id="pageEnd">10</span> 条，共 <span id="totalCount">50</span> 条记录
+                    </div>
+                    <div class="pagination" id="pagination">
+                        <!-- 分页按钮将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 角色管理页面 -->
+            <div class="page-content" id="roles">
+                <div class="page-header">
+                    <h1>角色管理</h1>
+                    <button class="btn btn-primary" id="addRoleBtn">
+                        <i class="fas fa-plus"></i>
+                        添加角色
+                    </button>
+                </div>
+
+                <div class="roles-grid" id="rolesGrid">
+                    <!-- 角色卡片将通过JavaScript动态生成 -->
+                </div>
+            </div>
+
+            <!-- 系统管理页面 -->
+            <div class="page-content" id="system">
+                <div class="page-header">
+                    <h1>系统管理</h1>
+                </div>
+
+                <div class="system-config">
+                    <div class="config-section">
+                        <h3>基本设置</h3>
+                        <form class="config-form">
+                            <div class="form-group">
+                                <label>系统名称</label>
+                                <input type="text" class="form-control" value="后台管理系统">
+                            </div>
+                            <div class="form-group">
+                                <label>系统描述</label>
+                                <textarea class="form-control" rows="3">企业级后台管理系统</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>系统版本</label>
+                                <input type="text" class="form-control" value="v1.0.0">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="config-section">
+                        <h3>安全设置</h3>
+                        <form class="config-form">
+                            <div class="form-group">
+                                <label>密码最小长度</label>
+                                <input type="number" class="form-control" value="8" min="6" max="20">
+                            </div>
+                            <div class="form-group">
+                                <label>登录失败锁定次数</label>
+                                <input type="number" class="form-control" value="5" min="3" max="10">
+                            </div>
+                            <div class="form-group">
+                                <label>会话超时时间（分钟）</label>
+                                <input type="number" class="form-control" value="30" min="10" max="120">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="config-actions">
+                        <button class="btn btn-primary">保存设置</button>
+                        <button class="btn btn-default">重置</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 系统日志页面 -->
+            <div class="page-content" id="logs">
+                <div class="page-header">
+                    <h1>系统日志</h1>
+                    <button class="btn btn-success" id="exportLogsBtn">
+                        <i class="fas fa-download"></i>
+                        导出日志
+                    </button>
+                </div>
+
+                <!-- 日志筛选 -->
+                <div class="filter-section">
+                    <div class="filter-form">
+                        <div class="form-group">
+                            <select class="form-control" id="logLevelFilter">
+                                <option value="">全部级别</option>
+                                <option value="info">信息</option>
+                                <option value="warning">警告</option>
+                                <option value="error">错误</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control" id="startDate">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control" id="endDate">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="搜索日志内容" id="logSearch">
+                        </div>
+                        <button class="btn btn-primary" id="filterLogsBtn">筛选</button>
+                        <button class="btn btn-default" id="resetLogsBtn">重置</button>
+                    </div>
+                </div>
+
+                <!-- 日志列表 -->
+                <div class="logs-container">
+                    <div class="log-list" id="logList">
+                        <!-- 日志条目将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 模态框 -->
+    <div class="modal" id="userModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">添加用户</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <div class="form-group">
+                        <label>用户名 *</label>
+                        <input type="text" class="form-control" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>邮箱 *</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>密码 *</label>
+                        <input type="password" class="form-control" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>角色</label>
+                        <select class="form-control" name="role">
+                            <option value="user">普通用户</option>
+                            <option value="admin">管理员</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>状态</label>
+                        <select class="form-control" name="status">
+                            <option value="active">启用</option>
+                            <option value="inactive">禁用</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" id="cancelBtn">取消</button>
+                <button class="btn btn-primary" id="saveUserBtn">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 角色权限模态框 -->
+    <div class="modal" id="roleModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="roleModalTitle">添加角色</h3>
+                <button class="modal-close" id="closeRoleModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="roleForm">
+                    <div class="form-group">
+                        <label>角色名称 *</label>
+                        <input type="text" class="form-control" name="roleName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>角色描述</label>
+                        <textarea class="form-control" name="roleDesc" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>权限配置</label>
+                        <div class="permission-tree" id="permissionTree">
+                            <!-- 权限树将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" id="cancelRoleBtn">取消</button>
+                <button class="btn btn-primary" id="saveRoleBtn">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
